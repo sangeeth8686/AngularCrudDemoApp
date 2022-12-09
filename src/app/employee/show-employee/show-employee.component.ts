@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiserviceService } from 'src/app/apiservice.service';
+import { ApiService } from 'src/app/apiservice.service';
 
 @Component({
   selector: 'app-show-employee',
@@ -8,7 +8,7 @@ import { ApiserviceService } from 'src/app/apiservice.service';
 })
 export class ShowEmployeeComponent implements OnInit {
 
-  constructor(private service: ApiserviceService) { }
+  constructor(private service: ApiService) { }
 
   EmployeeList: any = [];
   ModalTitle = "";
@@ -25,7 +25,6 @@ export class ShowEmployeeComponent implements OnInit {
       EmployeeName: "",
       Department: "",
       DateOfJoining: "",
-      PhotoFileName: "anonymous.png"
     }
     this.ModalTitle = "Add Employee";
     this.ActivateAddEditEmpComp = true;
@@ -53,7 +52,7 @@ export class ShowEmployeeComponent implements OnInit {
 
   refreshEmpList() {
     this.service.getEmployeeList().subscribe(data => {
-      console.log(data);
+      //console.log(data);
 
       this.EmployeeList = data;
     });

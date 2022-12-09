@@ -9,9 +9,10 @@ import { ShowDepartmentComponent } from './department/show-department/show-depar
 import { EmployeeComponent } from './employee/employee.component';
 import { AddEditEmployeeComponent } from './employee/add-edit-employee/add-edit-employee.component';
 import { ShowEmployeeComponent } from './employee/show-employee/show-employee.component';
-import { ApiserviceService } from './apiservice.service';
+import { ApiService } from './apiservice.service';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {HttpClientModule } from '@angular/common/http';
     ShowDepartmentComponent,
     EmployeeComponent,
     AddEditEmployeeComponent,
-    ShowEmployeeComponent
+    ShowEmployeeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import {HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ApiserviceService],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

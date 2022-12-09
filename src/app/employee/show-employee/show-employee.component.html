@@ -27,6 +27,7 @@
     <tr>
       <th>Employee Id</th>
       <th>Employee Name</th>
+      <th>Email ID</th>
       <th>Department</th>
       <th>Date Of Joining</th>
       <th>Options</th>
@@ -36,6 +37,7 @@
     <tr *ngFor="let dataItem of EmployeeList">
       <td>{{dataItem.employeeID}}</td>
       <td>{{dataItem.employeeName}}</td>
+      <td>{{dataItem.emalId}}</td>
       <td>{{dataItem.department}}</td>
       <td>{{dataItem.doj}}</td>
       <td>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ApiserviceService } from 'src/app/apiservice.service';
+import { ApiService } from 'src/app/apiservice.service';
 
 @Component({
   selector: 'app-add-edit-department',
@@ -8,7 +8,7 @@ import { ApiserviceService } from 'src/app/apiservice.service';
 })
 export class AddEditDepartmentComponent implements OnInit {
 
-  constructor(private service: ApiserviceService) { }
+  constructor(private service: ApiService) { }
 
   @Input() depart: any;
   DepartmentId = "";
@@ -35,7 +35,7 @@ export class AddEditDepartmentComponent implements OnInit {
       DepartmentId: this.DepartmentId,
       DepartmentName: this.DepartmentName
     };
-    this.service.updateDepartment(dept.DepartmentId,dept).subscribe(res => {
+    this.service.updateDepartment(dept).subscribe(res => {
       alert(res.toString());
     });
   }

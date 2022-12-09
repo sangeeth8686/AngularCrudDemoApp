@@ -1,6 +1,6 @@
 import { IfStmt } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { ApiserviceService } from 'src/app/apiservice.service';
+import { ApiService } from 'src/app/apiservice.service';
 
 @Component({
   selector: 'app-add-edit-employee',
@@ -9,7 +9,7 @@ import { ApiserviceService } from 'src/app/apiservice.service';
 })
 export class AddEditEmployeeComponent implements OnInit {
 
-  constructor(private service: ApiserviceService) { }
+  constructor(private service: ApiService) { }
   @Input() emp: any;
   EmployeeId = "";
   EmployeeName = "";
@@ -43,8 +43,10 @@ export class AddEditEmployeeComponent implements OnInit {
     };
 
     this.service.addEmployee(val).subscribe(res => {
-      console.log(res);
-      alert(res.toString());
+      //console.log(res);
+      //alert(res.toString());
+      window.alert("Updated");
+      close();
     });
   }
 
@@ -56,10 +58,10 @@ export class AddEditEmployeeComponent implements OnInit {
       DateOfJoining: this.DateOfJoining,
     };
 
-    if(this.service.updateEmployee(val.EmployeeId,val))
+  this.service.updateEmployee(val.EmployeeId,val).subscribe(res =>
     {
-      alert("Updated Successfully")
-    }
+      alert("Updated");
+    });
     
   }
 }

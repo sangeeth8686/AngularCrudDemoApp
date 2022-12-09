@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiserviceService } from 'src/app/apiservice.service';
+import { groupBy } from 'rxjs';
+import { ApiService } from 'src/app/apiservice.service';
 
 @Component({
   selector: 'app-show-department',
@@ -8,9 +9,9 @@ import { ApiserviceService } from 'src/app/apiservice.service';
 })
 export class ShowDepartmentComponent implements OnInit {
 
-  constructor(private service: ApiserviceService) { }
+  constructor(private service: ApiService) { }
 
-  DepartmentList: any = [];
+  DepartmentList: any[]= [];
   ModalTitle = "";
   ActivateAddEditDepartComp: boolean = false;
   depart: any;
@@ -18,6 +19,7 @@ export class ShowDepartmentComponent implements OnInit {
   DepartmentIdFilter = "";
   DepartmentNameFilter = "";
   DepartmentListWithoutFilter: any = [];
+  EmployeeList: any[]=[];
 
   ngOnInit(): void {
     this.refreshDepList();
@@ -54,37 +56,25 @@ export class ShowDepartmentComponent implements OnInit {
 
 
   refreshDepList() {
+
+    // this.service.getEmployeeList().subscribe(data=>{
+    //   this.EmployeeList= data;
+    // });
     this.service.getDepartmentsList().subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.DepartmentList = data;
       this.DepartmentListWithoutFilter = data;
-    console.log(this.DepartmentList);
+      // @ts-ignore
+    // const res = this.DepartmentList.filter(emp => {
+    //   this.EmployeeList.some(dep => emp.departmentId == dep.employeeID)}
+    //   );
+    //    console.log(res);
+    // });
     });
   }
 
-  sortResult(prop: any, asc: any) {
-    this.DepartmentList = this.DepartmentListWithoutFilter.sort(function (a: any, b: any) {
-      if (asc) {
-        return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
-      }
-      else {
-        return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
-      }
-    });
-  }
-
-  FilterFn() {
-    var DepartmentIdFilter = this.DepartmentIdFilter;
-    var DepartmentNameFilter = this.DepartmentNameFilter;
-
-    this.DepartmentList = this.DepartmentListWithoutFilter.filter(
-      function (el: any) {
-        return el.DepartmentId.toString().toLowerCase().includes(
-          DepartmentIdFilter.toString().trim().toLowerCase()
-        ) &&
-          el.DepartmentName.toString().toLowerCase().includes(
-            DepartmentNameFilter.toString().trim().toLowerCase())
-      }
-    );
+  groupEmployeesByDept():any {
+    let empCount = typeof(this.DepartmentList);
+//console.log(empCount);
   }
 }
