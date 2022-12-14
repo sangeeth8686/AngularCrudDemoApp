@@ -52,6 +52,11 @@ export class ApiService {
     return this.httpClient.get<any[]>(this.apiurl+'employee/GetEmployee')
     
   }
+  //login
+  Login():Observable<any>{
+    return this.httpClient.get<any[]>(this.apiurl+'employee/login')
+    
+  }
 
   addEmployee(emp:any):Observable<any>{
     return this.httpClient.post(this.apiurl+'employee/AddEmployee',emp,this.httpOptions);

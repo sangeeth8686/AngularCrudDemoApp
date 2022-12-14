@@ -10,9 +10,12 @@ import { EmployeeComponent } from './employee/employee.component';
 import { AddEditEmployeeComponent } from './employee/add-edit-employee/add-edit-employee.component';
 import { ShowEmployeeComponent } from './employee/show-employee/show-employee.component';
 import { ApiService } from './apiservice.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth/auth.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,15 +26,18 @@ import { HomeComponent } from './home/home.component';
     EmployeeComponent,
     AddEditEmployeeComponent,
     ShowEmployeeComponent,
-    HomeComponent
+    HomeComponent,
+  LoginComponent,
+  RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ApiService],
+  providers: [ApiService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

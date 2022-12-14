@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthGuard } from '../auth/auth.service';
 
 @Component({
   selector: 'app-department',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepartmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthGuard) { }
 
   ngOnInit(): void {
+    this.authService.isUserLoggedIn;
   }
 
 }
